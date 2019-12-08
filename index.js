@@ -3,6 +3,11 @@ const utils = require('./utils');
 
 yargs
   .usage('Usage: node $0 <command> [options]')
+  .example('node $0 add --key=ajay --value="my first tweet"')
+  .example('node $0 find --key=ajay')
+  .example('node $0 find --value="my first tweet"')
+  .example('node $0 find --timestamp=123456789')
+  .example('node $0 list')
   .command({
     command: 'add',
     describe: 'Add object',
