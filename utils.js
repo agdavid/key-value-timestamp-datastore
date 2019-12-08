@@ -9,23 +9,46 @@ const addObject = (key, value) => {
     return object.key === key && object.value === value;
   });
 
+  let timestamp = Date.now();
+
+  let object = {
+    key,
+    value,
+    timestamp
+  };
+
   if (!duplicateObject) {
     // new key-value pair
-    let timestamp = Date.now();
-
-    objects.push({
-      key,
-      value,
-      timestamp
-    });
+    objects.push(object);
     saveObjects(objects);
     console.log(chalk.inverse.green('New object added'));
+    console.log(object);
   } else {
     // existing key-value pair
     console.log(
       chalk.inverse.red('Key-value taken. Select new key-value pair')
     );
+    console.log(object);
   }
+};
+
+const findObjects = (key = null, value = null, timestamp = null) => {
+  let objects = loadObjects();
+
+  const optionHash = {
+    key,
+    value,
+    timestamp
+  };
+
+  for (let option in optionHash) {
+    if (!!optionHash[option]) {
+      objects = objects.filter(object => {
+        return object[option] === optionHash[option];
+      });
+    }
+  }
+  console.log(objects);
 };
 
 const loadObjects = () => {
@@ -46,5 +69,6 @@ const saveObjects = objects => {
 };
 
 module.exports = {
-  addObject
+  addObject,
+  findObjects
 };
