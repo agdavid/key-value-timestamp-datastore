@@ -51,12 +51,50 @@ const findObjects = (key = null, value = null, timestamp = null) => {
       });
     }
   }
-  console.log(objects);
+  if (objects.length > 0) {
+    console.log(chalk.inverse.green('Matching objects'));
+    console.log(objects);
+  } else {
+    console.log(chalk.inverse.red('No matching objects'));
+    console.log(objects);
+  }
 };
 
 const listObjects = () => {
   const objects = loadObjects();
+  console.log(chalk.inverse.green('All objects'));
   console.log(objects);
+};
+
+const removeObject = (key, timestamp) => {
+  const objects = loadObjects();
+  let currentObject;
+  let targetIndex;
+  let targetObject;
+
+  // loop through objects
+  // if match located, set index and object
+  for (let i = 0; i < objects.length; i++) {
+    currentObject = objects[i];
+    if (currentObject.key === key && currentObject.timestamp === timestamp) {
+      targetIndex = i;
+      targetObject = currentObject;
+    }
+  }
+
+  if (!!targetObject) {
+    console.log(chalk.green.inverse('Object to remove located'));
+    console.log(objects[targetIndex]);
+    // remove object at specified index from array
+    objects.splice(targetIndex, 1);
+    saveObjects(objects);
+  } else {
+    console.log(
+      chalk.red.inverse(
+        `Object to remove not found for key=${key} timestamp=${timestamp}`
+      )
+    );
+  }
 };
 
 const loadObjects = () => {
@@ -79,5 +117,6 @@ const saveObjects = objects => {
 module.exports = {
   addObject,
   findObjects,
-  listObjects
+  listObjects,
+  removeObject
 };

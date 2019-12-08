@@ -8,6 +8,7 @@ yargs
   .example('node $0 find --value="my first tweet"')
   .example('node $0 find --timestamp=123456789')
   .example('node $0 list')
+  .example('node $0 remove --key="ajay" --timestamp=123456789')
   .command({
     command: 'add',
     describe: 'Add object',
@@ -59,6 +60,25 @@ yargs
     describe: 'List all objects',
     handler() {
       utils.listObjects();
+    }
+  })
+  .command({
+    command: 'remove',
+    describe: 'Remove object',
+    builder: {
+      key: {
+        describe: 'key',
+        demandOption: true,
+        type: 'string'
+      },
+      timestamp: {
+        describe: 'timestamp',
+        demandOption: true,
+        type: 'number'
+      }
+    },
+    handler(argv) {
+      utils.removeObject(argv.key, argv.timestamp);
     }
   })
   .help('h')
