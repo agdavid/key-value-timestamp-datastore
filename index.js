@@ -20,7 +20,7 @@ yargs
       }
     },
     handler(argv) {
-      utils.addKeyValue(argv.key, argv.value);
+      utils.addObject(argv.key, argv.value);
     }
   })
   .help('h')
