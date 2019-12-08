@@ -1,4 +1,5 @@
 const yargs = require('yargs');
+const utils = require('./utils');
 
 yargs
   .usage('Usage: node $0 <command> [options]')
@@ -19,8 +20,7 @@ yargs
       }
     },
     handler(argv) {
-      console.log('Made it');
-      console.log(argv);
+      utils.addKeyValue(argv.key, argv.value);
     }
   })
   .help('h')
