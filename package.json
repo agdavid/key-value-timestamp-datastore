@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/agdavid/stripe-key-value-timestamp-challenge/issues"
   },
-  "homepage": "https://github.com/agdavid/stripe-key-value-timestamp-challenge#readme"
+  "homepage": "https://github.com/agdavid/stripe-key-value-timestamp-challenge#readme",
+  "dependencies": {
+    "yargs": "^15.0.2"
+  }
 }
