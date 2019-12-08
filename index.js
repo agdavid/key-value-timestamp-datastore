@@ -49,5 +49,12 @@ yargs
       utils.findObjects(argv.key, argv.value, argv.timestamp);
     }
   })
+  .command({
+    command: 'list',
+    describe: 'List all objects',
+    handler() {
+      utils.listObjects();
+    }
+  })
   .help('h')
   .alias('h', 'help').argv;

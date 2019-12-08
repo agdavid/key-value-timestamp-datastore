@@ -42,12 +42,20 @@ const findObjects = (key = null, value = null, timestamp = null) => {
   };
 
   for (let option in optionHash) {
+    // optionHash[option] is a value (e.g., "ajay", "i ate a sandwich", 123456789) or null
+    // coerce into true/false boolean value with !! operator
+    // if true, filter objects for matching key-value
     if (!!optionHash[option]) {
       objects = objects.filter(object => {
         return object[option] === optionHash[option];
       });
     }
   }
+  console.log(objects);
+};
+
+const listObjects = () => {
+  const objects = loadObjects();
   console.log(objects);
 };
 
@@ -70,5 +78,6 @@ const saveObjects = objects => {
 
 module.exports = {
   addObject,
-  findObjects
+  findObjects,
+  listObjects
 };
