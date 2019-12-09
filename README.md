@@ -1,4 +1,4 @@
-# Stripe Key-Value-Timestore Challenge
+# Stripe Key-Value-Timestamp Challenge
 
 A CLI tool to perform data manipulations to a JSON data store.
 
