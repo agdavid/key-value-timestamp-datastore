@@ -1,4 +1,4 @@
-# Stripe Key-Value-Timestamp Challenge
+# Key-Value-Timestamp Challenge
 
 A CLI tool to perform data manipulations to a JSON data store.
 
@@ -15,7 +15,7 @@ A CLI tool to perform data manipulations to a JSON data store.
 
 # Install
 
-- Clone repo: `git clone git@github.com:agdavid/stripe-key-value-timestamp-challenge.git`
+- Clone repo: `git clone git@github.com:agdavid/key-value-timestamp-datastore.git`
 - `npm install`
 
 # Usage
